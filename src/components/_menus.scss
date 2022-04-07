@@ -1,0 +1,91 @@
+
+@mixin setFlex ($dir, $aligX){
+    display: flex;
+    flex-direction: $dir;
+
+    @if $dir == row  {
+        justify-content: $aligX;
+    } @else {
+        align-content: $aligX;
+    }    
+}
+
+
+
+#menuBar{
+     
+   grid-area: menuBar;
+   background-color: getColorsBase('primary', 3);   
+   text-align: center;
+   padding: 1rem;
+
+    .menu{
+        width: 100%;        
+        @include setFlex(column, space-evenly, space-around);
+       align-items: flex-start;        
+
+        .menu-opt{
+            padding: $unit/4;          
+            width: 95%;              
+
+            .menu-link{
+                display: inline-block;                
+                font-size: 1.75rem;
+                width: 95%;
+                text-align: left;              
+            }
+
+            .subMenu{
+                width: 100%;
+                @include setFlex(row, space-evenly);
+
+                li{
+                    a{
+                        font-size: 4rem;
+                    }
+                }
+            }
+
+
+        }
+
+    }
+    
+}
+
+i{
+    margin-inline: 1.5rem;
+    padding: 1rem;
+    color: rgb(0, 0, 0);
+    border-radius: 15%;    
+    box-shadow: 1px 1px 5px 0px pink;
+    transition: all 500ms ease-in-out;
+    
+
+    &:hover{
+        color: rgb(23, 232, 255);
+    }
+}
+
+.btn{
+    
+    transition: all 250ms ease-in-out;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-inline: 1.5rem;
+    font-size: 1.5rem;
+
+    @each $nombre, $color in $palleta {
+        &-#{$nombre}{
+            border: 1px solid darken($color, 3);
+            color: darken($color, 3);           
+            box-shadow: 4px 3px 5px 2px lighten($color, 30);
+
+            &:hover{
+                background-color: darken($color, 5);
+                color: getColorsBase('secondary', 1);
+            }
+        }
+    }
+}
+

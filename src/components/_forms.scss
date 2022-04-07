@@ -1,0 +1,21 @@
+#forms{
+    grid-area: forms;
+    @include setFlex(column);
+    padding-bottom: 1rem;
+
+    div.controlFormulario{
+        @include setFlex(row, space-evenly);
+        padding: 1rem 0%;
+        width: 90%;
+
+        input{
+            box-sizing: border-box;
+            width: 50%;                       
+        }
+    }
+
+    textarea{
+        width: 90%;
+        margin: auto;
+    }
+}

@@ -1,0 +1,9 @@
+@function getValueOfMap($mapa, $llave){
+    $elemento: map-get($map: $mapa, $key: $llave );
+    @return $elemento;
+}
+
+@function getColorsBase($tipo, $tipoColor){
+    $elemento: map-get($map: $colorBase, $key: $tipo);
+    @return nth($elemento, $tipoColor);
+}
